@@ -19,7 +19,7 @@ class TrainersList{
         }
         void insert(string name) {
             Node* newNode = new Node;
-            newNode -> name = name;
+            newNode ->name = name;
             newNode->Next = head;
             head = newNode;
             cout << name << " added to Trainers List" << endl;

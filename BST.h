@@ -122,7 +122,15 @@ class BST{
             }    
         }
 
-        
+        void addTrainer(string machine, string name) {
+            BSTNode* machineNode = searchMachine(machine);
+            if (machineNode != nullptr) {
+                machineNode ->trainers.insert(name);
+                cout << name << " assigned to " << machine << endl;
+            }
+        }
+
+
 
 
 
