@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "Queue.h"
+#include "LinkedList.h"
 using namespace std;
 
 class BSTNode{
@@ -8,7 +9,7 @@ public:
     string name;
     int number;
     ExerciseQueue exercises;
-    //linkedList to be added
+    TrainersList trainers;
     BSTNode* left;
     BSTNode* right;
 };
@@ -78,7 +79,6 @@ class BST{
             }
          }
         
-        void remove(int data );
         void display() {
             if (isEmpty()) {
                 cout << "No machines!" << endl;
@@ -94,6 +94,39 @@ class BST{
                 delete node;
             }
         }
+
+        BSTNode* searchMachine(string name){
+            BSTNode* current = root;
+             while(current != NULL) {
+                if (name == current->name) {
+                    cout << "Found machine: " << current->name << endl;
+                    return current;
+                }
+                if(name < current->name) {
+                    current = current-> left;
+                } else {
+                    current = current-> right;
+                }
+            }
+                cout <<"Machine: " << name << " not found!" << endl;
+                return nullptr;
+            
+        }
+
+        void addExercise(string machine, string Exename, int rank, string muscle){
+            //search for machine
+            BSTNode* machineNode = searchMachine(machine);
+            if (machineNode != nullptr) {
+                machineNode -> exercises.enqueue(Exename, rank, muscle);
+                cout <<"Exercise " << Exename << " added to " << machine << endl;
+            }    
+        }
+
+        
+
+
+
+
         ~BST(){
             deleteTree(root);
         };
