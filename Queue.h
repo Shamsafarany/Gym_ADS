@@ -53,6 +53,7 @@ class ExerciseQueue{
                 if(temp!= NULL) {
                     if(prev == NULL){
                         front = front->Next;
+                        delete temp;
                     } else {
                         prev->Next = temp->Next;
                         cout <<"Removed exercise: " << temp -> name << endl;

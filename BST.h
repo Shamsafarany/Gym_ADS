@@ -142,12 +142,7 @@ class BST{
             }
         }
 
-        
-
-
-
-
-
+    
 
         ~BST(){
             deleteTree(root);
