@@ -34,7 +34,9 @@ int main(){
                 machines.display();
                 choice = displayMenu();
                 break;
-                
+            case 8:
+                cout <<"Exit Program" << endl;
+                cout<<"Exiting...." << endl;       
         }
     } while(choice != 8);
 
