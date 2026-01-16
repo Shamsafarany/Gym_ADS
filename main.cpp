@@ -24,6 +24,11 @@ int main(){
                 addExercise(machines);
                 choice = displayMenu();
                 break;
+            case 6:
+                cout<<"--   Print Machines in Alphabetical Order    --" << endl;
+                machines.display();
+                choice = displayMenu();
+                break;
                 
         }
     } while(choice != 8);

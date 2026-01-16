@@ -75,7 +75,6 @@ class BST{
             }     
          }
          void printInOrder(BSTNode* node){
-            cout << "Machines in alphabetical order: " <<endl;
             if (node != NULL) {
                 printInOrder(node-> left);
                 cout << node->name << " " << node-> number << endl;
@@ -91,6 +90,7 @@ class BST{
             if (isEmpty()) {
                 cout << "No machines!" << endl;
             } else {
+                cout << "Machines in alphabetical order: " <<endl;
                 printInOrder(root);
             }
         };
