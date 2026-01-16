@@ -73,6 +73,7 @@ class ExerciseQueue{
             }
             while (temp != NULL) {
                 cout << temp-> name << " " << temp->muscle << " " << temp->rank << endl;
+                temp = temp->Next;
             }
         }
 };

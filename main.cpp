@@ -5,6 +5,7 @@ using namespace std;
 int displayMenu();
 void insertMachine(BST& machines);
 void searchMachine(BST& machines);
+void addExercise(BST& machines);
 int main(){
     BST machines;
     
@@ -17,6 +18,10 @@ int main(){
                 break;
             case 2: 
                 searchMachine(machines);
+                choice = displayMenu();
+                break;
+            case 4:
+                addExercise(machines);
                 choice = displayMenu();
                 break;
                 
@@ -66,4 +71,23 @@ void searchMachine(BST& machines){
     cout<<"Enter machine name: " << endl;
     cin >> name;
     bool found = machines.searchMachine(name);
+}
+
+void addExercise(BST& machines){
+    cout<<"--   Add Exercise    --" << endl;
+    string machine, name, muscle;
+    int rank;
+    if (machines.isEmpty()) {
+        cout<<"No machines yet" << endl;
+        return;
+    }
+    cout<<"Enter machine name: ";
+    cin >> machine;
+    cout<<"Enter exercise name: ";
+    cin >> name;
+    cout << "Enter rank: ";
+    cin >> rank;
+    cout <<"Enter muscle: ";
+    cin >> muscle;
+    machines.addExercise(machine, name, rank, muscle);
 }

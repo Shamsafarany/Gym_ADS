@@ -112,7 +112,7 @@ class BST{
              while(current != NULL) {
                 if (name == current->name) {
                     cout << "Found machine " << current->name << " " << current->number << endl;
-                cout <<"Exercises: ";
+                cout <<"Exercises: " << endl;
                 current->exercises.display();
                 cout <<"Trainers: ";
                 current->trainers.display();
@@ -164,8 +164,6 @@ class BST{
 
             }
         }
-
-    
 
         ~BST(){
             deleteTree(root);
