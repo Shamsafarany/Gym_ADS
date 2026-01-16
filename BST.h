@@ -51,9 +51,9 @@ class BST{
                     parent->left = newNode;
                 } else {
                     parent->right = newNode;
-                } 
-                cout <<"Machine - " << name << " - " << number << " - inserted!" << endl;
+                }    
             }
+            cout <<"Machine: " << name << " | " << "Number: " << number << " inserted" << endl;
         }
         bool search(string name, BSTNode* root) {
             BSTNode* temp = root;
@@ -63,6 +63,10 @@ class BST{
             } else if (name == temp->name) {
                 cout << "Machine found" << endl;
                 cout << temp->name << " " << temp-> number << " " << endl;
+                cout <<"Exercises: ";
+                temp->exercises.display();
+                cout <<"Trainers: ";
+                temp->trainers.display();
                 return true;
             } else if (name < temp->name) {
                 return search(name, temp-> left);
@@ -139,6 +143,17 @@ class BST{
             if (machineNode != nullptr) {
                 machineNode ->trainers.insert(name);
                 cout << name << " assigned to " << machine << endl;
+            }
+        }
+
+        void deleteMachine(string name){
+            if (isEmpty()) {
+                cout << "No machines!" << endl;
+                return;
+            } else {
+                BSTNode* parent = NULL;
+                BSTNode* temp = root;
+
             }
         }
 
