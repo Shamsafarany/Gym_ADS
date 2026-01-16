@@ -6,6 +6,7 @@ int displayMenu();
 void insertMachine(BST& machines);
 void searchMachine(BST& machines);
 void addExercise(BST& machines);
+void deleteExercise(BST& machines);
 int main(){
     BST machines;
     
@@ -22,6 +23,10 @@ int main(){
                 break;
             case 4:
                 addExercise(machines);
+                choice = displayMenu();
+                break;
+            case 5:
+                deleteExercise(machines);
                 choice = displayMenu();
                 break;
             case 6:
@@ -95,4 +100,18 @@ void addExercise(BST& machines){
     cout <<"Enter muscle: ";
     cin >> muscle;
     machines.addExercise(machine, name, rank, muscle);
+}
+
+void deleteExercise(BST& machines){
+    cout <<"--  Delete Exercise    --" << endl;
+    string machine, exercise;
+    cout <<"Enter machine name: ";
+    cin >> machine;
+    cout<< "Enter Exercise: ";
+    cin >> exercise;
+    bool found = machines.searchMachine(machine);
+    if (found) {
+        machines.removeExercise(machine, exercise);
+    }
+
 }

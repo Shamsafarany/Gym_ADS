@@ -39,12 +39,12 @@ class ExerciseQueue{
                 temp->Next = newNode;
             }
         }
-        void deleteExercise(string name){
+        bool deleteExercise(string name){
             QNode* temp = front;
             QNode* prev = NULL;
             if (isEmpty()) {
                 cout << "No exercises for this machine!" << endl;
-                return;
+                return false;
             } else {
                 while(temp != NULL && temp->name != name){
                     prev = temp;
@@ -53,6 +53,7 @@ class ExerciseQueue{
                 if(temp!= NULL) {
                     if(prev == NULL){
                         front = front->Next;
+                        cout <<"Removed exercise: " << temp -> name << endl;
                         delete temp;
                     } else {
                         prev->Next = temp->Next;
@@ -61,8 +62,9 @@ class ExerciseQueue{
                     }
                 } else {
                     cout << "Exercise not found!" << endl;
+                    return false;
                 }
-                
+                return true;
             }
         }
 
@@ -70,6 +72,7 @@ class ExerciseQueue{
             QNode* temp = front;
             if(isEmpty()){
                 cout << "No exercises added!" << endl;
+                return;
             }
             while (temp != NULL) {
                 cout << temp-> name << " " << temp->muscle << " " << temp->rank << endl;

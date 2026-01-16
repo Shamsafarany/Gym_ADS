@@ -141,8 +141,13 @@ class BST{
             //search for machine
             BSTNode* machineNode = searchMachine(machine);
             if(machineNode != nullptr) {
-                machineNode ->exercises.deleteExercise(name);
+               bool deleted = machineNode ->exercises.deleteExercise(name);
+               if (deleted) {
                 cout << "Exercise " << name << " removed from " << machine <<endl;
+               } else {
+                 return;
+               }
+                
             }
         }
 
