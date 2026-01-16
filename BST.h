@@ -105,9 +105,17 @@ class BST{
 
         BSTNode* searchMachine(string name){
             BSTNode* current = root;
+            if(isEmpty()) {
+                cout<<"No machines" << endl;
+                return nullptr;
+            }
              while(current != NULL) {
                 if (name == current->name) {
-                    cout << "Found machine: " << current->name << endl;
+                    cout << "Found machine " << current->name << " " << current->number << endl;
+                cout <<"Exercises: ";
+                current->exercises.display();
+                cout <<"Trainers: ";
+                current->trainers.display();
                     return current;
                 }
                 if(name < current->name) {
@@ -116,7 +124,7 @@ class BST{
                     current = current-> right;
                 }
             }
-                cout <<"Machine: " << name << " not found!" << endl;
+                cout <<"Machine " << name << " not found!" << endl;
                 return nullptr;
             
         }

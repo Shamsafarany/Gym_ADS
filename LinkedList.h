@@ -26,6 +26,9 @@ class TrainersList{
         }
         void display(){
             TNode* temp = head;
+            if(isEmpty()){
+                cout << "No trainers added!" << endl;
+            }
             while(temp!= NULL) {
                 cout << "Trainer " << temp->name << endl;
                 temp = temp -> Next;

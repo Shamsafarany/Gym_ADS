@@ -15,6 +15,11 @@ int main(){
                 insertMachine(machines);
                 choice = displayMenu();
                 break;
+            case 2: 
+                searchMachine(machines);
+                choice = displayMenu();
+                break;
+                
         }
     } while(choice != 8);
 
@@ -60,5 +65,5 @@ void searchMachine(BST& machines){
     string name;
     cout<<"Enter machine name: " << endl;
     cin >> name;
-    bool found = machines.search(name, BST* machines);
+    bool found = machines.searchMachine(name);
 }

@@ -68,6 +68,9 @@ class ExerciseQueue{
 
         void display(){
             QNode* temp = front;
+            if(isEmpty()){
+                cout << "No exercises added!" << endl;
+            }
             while (temp != NULL) {
                 cout << temp-> name << " " << temp->muscle << " " << temp->rank << endl;
             }
