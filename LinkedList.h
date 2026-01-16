@@ -1,15 +1,15 @@
 #include <iostream>
 using namespace std;
 
-class Node{
+class TNode{
     public:
     string name;
-    Node* Next;
+    TNode* Next;
 };
 
 class TrainersList{
     private:
-    Node* head;
+    TNode* head;
     public:
         TrainersList(){
             head = NULL;
@@ -18,10 +18,17 @@ class TrainersList{
             return head == NULL;
         }
         void insert(string name) {
-            Node* newNode = new Node;
+            TNode* newNode = new TNode;
             newNode ->name = name;
             newNode->Next = head;
             head = newNode;
             cout << name << " added to Trainers List" << endl;
+        }
+        void display(){
+            TNode* temp = head;
+            while(temp!= NULL) {
+                cout << "Trainer " << temp->name << endl;
+                temp = temp -> Next;
+            }
         }
 };

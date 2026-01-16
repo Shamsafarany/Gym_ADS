@@ -75,6 +75,10 @@ class BST{
             if (node != NULL) {
                 printInOrder(node-> left);
                 cout << node->name << " " << node-> number << endl;
+                cout <<"Exercises: ";
+                node->exercises.display();
+                cout <<"Trainers: ";
+                node->trainers.display();
                 printInOrder(node->right);
             }
          }
@@ -121,6 +125,14 @@ class BST{
                 cout <<"Exercise " << Exename << " added to " << machine << endl;
             }    
         }
+        void removeExercise(string machine, string name){
+            //search for machine
+            BSTNode* machineNode = searchMachine(machine);
+            if(machineNode != nullptr) {
+                machineNode ->exercises.deleteExercise(name);
+                cout << "Exercise " << name << " removed from " << machine <<endl;
+            }
+        }
 
         void addTrainer(string machine, string name) {
             BSTNode* machineNode = searchMachine(machine);
@@ -129,6 +141,8 @@ class BST{
                 cout << name << " assigned to " << machine << endl;
             }
         }
+
+        
 
 
 
