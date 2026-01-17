@@ -7,6 +7,8 @@ void insertMachine(BST& machines);
 void searchMachine(BST& machines);
 void addExercise(BST& machines);
 void deleteExercise(BST& machines);
+void addTrainer(BST& machines);
+void printTrainersReverse(BST& machines);
 int main(){
     BST machines;
     
@@ -34,15 +36,21 @@ int main(){
                 machines.display();
                 choice = displayMenu();
                 break;
+
+            case 7:
+                addTrainer(machines);
+                choice = displayMenu();
+                break;
             case 8:
+                printTrainersReverse(machines);
+                choice = displayMenu();
+                break;
+            case 9:
                 cout <<"Exit Program" << endl;
-                cout<<"Exiting...." << endl;       
+                cout<<"Exiting...." << endl;   
+                break;    
         }
-    } while(choice != 8);
-
-
-
-
+    } while(choice != 9);
     return 0;
 }
 
@@ -57,8 +65,9 @@ int displayMenu(){
         cout <<"4 - Add Exercise" << endl;
         cout <<"5 - Delete Exercise" << endl;
         cout <<"6 - Print Machines (Alphabetical Order)" << endl;
-        cout <<"7 - Print Trainers (Descending Order) " << endl;
-        cout <<"8 - Exit" <<endl;
+        cout <<"7 - Add Trainers " << endl;
+        cout <<"8 - Print Trainers (Descending Order) " << endl;
+        cout <<"9 - Exit" <<endl;
         cout <<"Choose operation: ";
         cin >> choice;
     } while(choice < 1 || choice > 8);
@@ -115,5 +124,19 @@ void deleteExercise(BST& machines){
     if (found) {
         machines.removeExercise(machine, exercise);
     }
+}
 
+void addTrainer(BST& machines){
+    cout<<"--   Add Trainer     --" << endl;
+    string machine, name;
+    cout<<"Enter machine: ";
+    cin >> machine;
+    cout<<"Enter name: ";
+    cin >> name;
+    machines.addTrainer(machine, name);
+}
+
+void printTrainersReverse(BST& machines){
+    cout<<"--   Print All Trainers     --" << endl; 
+    machines.printTrainersReverseHelper();
 }

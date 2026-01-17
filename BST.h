@@ -17,9 +17,11 @@ public:
 class BST{
     private: 
         BSTNode* root;
+        int count;
     public:
         BST(){
             root = NULL;
+            count = 0;
         };
         bool isEmpty(){
             return root == NULL;
@@ -54,6 +56,7 @@ class BST{
                 }    
             }
             cout <<"Machine: " << name << " | " << "Number: " << number << " inserted" << endl;
+            count++;
         }
         bool search(string name, BSTNode* root) {
             BSTNode* temp = root;
@@ -85,7 +88,6 @@ class BST{
                 printInOrder(node->right);
             }
          }
-        
         void display() {
             if (isEmpty()) {
                 cout << "No machines!" << endl;
@@ -93,7 +95,7 @@ class BST{
                 cout << "Machines in alphabetical order: " <<endl;
                 printInOrder(root);
             }
-        };
+        }
 
         void deleteTree(BSTNode* node){
             if(node!= NULL) {
@@ -137,6 +139,7 @@ class BST{
                 cout <<"Exercise " << Exename << " added to " << machine << endl;
             }    
         }
+        
         void removeExercise(string machine, string name){
             //search for machine
             BSTNode* machineNode = searchMachine(machine);
@@ -167,6 +170,23 @@ class BST{
                 BSTNode* parent = NULL;
                 BSTNode* temp = root;
 
+            }
+        }
+
+        void printTrainersReverse(BSTNode* node){
+           if (node != NULL) {
+                printTrainersReverse(node->left);
+                cout<< node->name << ": " << endl;
+                node->trainers.printReverse();
+                printTrainersReverse(node->right);
+           }
+        }
+        void printTrainersReverseHelper(){
+            if (root == NULL) {
+                cout << "No machines added!" << endl;
+                return;
+            } else {
+                printTrainersReverse(root);
             }
         }
 

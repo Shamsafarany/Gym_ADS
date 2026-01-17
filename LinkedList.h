@@ -34,4 +34,19 @@ class TrainersList{
                 temp = temp -> Next;
             }
         }
+
+        void printReverse(){
+            if (head == NULL) {
+                cout <<"No trainers added! " << endl;
+                return;
+            }
+            printReverseHelper(head);
+        }
+        void printReverseHelper(TNode* node) {
+            if (node == nullptr){
+                return;
+            }
+            printReverseHelper(node->Next);
+            cout << "    - " << node->name << endl; 
+    }
 };
