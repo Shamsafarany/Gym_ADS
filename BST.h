@@ -66,9 +66,9 @@ class BST{
             } else if (name == temp->name) {
                 cout << "Machine found" << endl;
                 cout << temp->name << " " << temp-> number << " " << endl;
-                cout <<"Exercises: ";
+                cout <<"Exercises: " << endl;
                 temp->exercises.display();
-                cout <<"Trainers: ";
+                cout <<"Trainers: " << endl;
                 temp->trainers.display();
                 return true;
             } else if (name < temp->name) {
@@ -81,10 +81,11 @@ class BST{
             if (node != NULL) {
                 printInOrder(node-> left);
                 cout << node->name << " " << node-> number << endl;
-                cout <<"Exercises: ";
+                cout <<"Exercises: " << endl;
                 node->exercises.display();
-                cout <<"Trainers: ";
+                cout <<"Trainers: " << endl;
                 node->trainers.display();
+                cout <<"----------------------------" << endl;
                 printInOrder(node->right);
             }
          }
@@ -116,7 +117,7 @@ class BST{
                     cout << "Found machine " << current->name << " " << current->number << endl;
                 cout <<"Exercises: " << endl;
                 current->exercises.display();
-                cout <<"Trainers: ";
+                cout <<"Trainers: " << endl;
                 current->trainers.display();
                     return current;
                 }
@@ -161,6 +162,20 @@ class BST{
                 cout << name << " assigned to " << machine << endl;
             }
         }
+        void removeTrainer(string machine, string trainer){
+            //search for machine
+            BSTNode* machineNode = searchMachine(machine);
+            if(machineNode != nullptr) {
+               bool deleted = machineNode ->trainers.deleteTrainer(trainer);
+               if (deleted) {
+                cout << "Trainer " << trainer << " removed from " << machine <<endl;
+               } else {
+                 return;
+               }
+                
+            }
+        }
+
 
         void deleteMachine(string name){
             if (isEmpty()) {

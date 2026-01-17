@@ -22,7 +22,7 @@ class TrainersList{
             newNode ->name = name;
             newNode->Next = head;
             head = newNode;
-            cout << name << " added to Trainers List" << endl;
+            cout << name <<" added to Trainers List" << endl;
         }
         void display(){
             TNode* temp = head;
@@ -48,5 +48,33 @@ class TrainersList{
             }
             printReverseHelper(node->Next);
             cout << "    - " << node->name << endl; 
-    }
+        }
+         bool deleteTrainer(string name){
+            TNode* temp = head;
+            TNode* prev = NULL;
+            if (isEmpty()) {
+                cout << "No exercises for this machine!" << endl;
+                return false;
+            } else {
+                while(temp != NULL && temp->name != name){
+                    prev = temp;
+                    temp = temp->Next;
+                }
+                if(temp!= NULL) {
+                    if(prev == NULL){
+                        head = head->Next;
+                        cout <<"Removed trainer: " << temp -> name << endl;
+                        delete temp;
+                    } else {
+                        prev->Next = temp->Next;
+                        cout <<"Removed trainer: " << temp -> name << endl;
+                        delete temp;
+                    }
+                } else {
+                    cout << "Trainer not found!" << endl;
+                    return false;
+                }
+                return true;
+            }
+        }
 };

@@ -9,6 +9,7 @@ void addExercise(BST& machines);
 void deleteExercise(BST& machines);
 void addTrainer(BST& machines);
 void printTrainersReverse(BST& machines);
+void removeTrainer(BST& machines);
 int main(){
     BST machines;
     
@@ -42,15 +43,19 @@ int main(){
                 choice = displayMenu();
                 break;
             case 8:
-                printTrainersReverse(machines);
+                removeTrainer(machines);
                 choice = displayMenu();
                 break;
             case 9:
+                printTrainersReverse(machines);
+                choice = displayMenu();
+                break;
+            case 10:
                 cout <<"Exit Program" << endl;
                 cout<<"Exiting...." << endl;   
                 break;    
         }
-    } while(choice != 9);
+    } while(choice != 10);
     return 0;
 }
 
@@ -65,12 +70,13 @@ int displayMenu(){
         cout <<"4 - Add Exercise" << endl;
         cout <<"5 - Delete Exercise" << endl;
         cout <<"6 - Print Machines (Alphabetical Order)" << endl;
-        cout <<"7 - Add Trainers " << endl;
-        cout <<"8 - Print Trainers (Descending Order) " << endl;
-        cout <<"9 - Exit" <<endl;
+        cout <<"7 - Add Trainer " << endl;
+        cout <<"8 - Remove Trainer" << endl;
+        cout <<"9 - Print Trainers (Descending Order) " << endl;
+        cout <<"10 - Exit" <<endl;
         cout <<"Choose operation: ";
         cin >> choice;
-    } while(choice < 1 || choice > 8);
+    } while(choice < 1 || choice > 10);
    
     return choice;
 }
@@ -106,7 +112,7 @@ void addExercise(BST& machines){
     cin >> machine;
     cout<<"Enter exercise name: ";
     cin >> name;
-    cout << "Enter rank: ";
+    cout <<"Enter rank: ";
     cin >> rank;
     cout <<"Enter muscle: ";
     cin >> muscle;
@@ -139,4 +145,17 @@ void addTrainer(BST& machines){
 void printTrainersReverse(BST& machines){
     cout<<"--   Print All Trainers     --" << endl; 
     machines.printTrainersReverseHelper();
+}
+
+void removeTrainer(BST& machines){
+    cout <<"--  Remove Trainer    --" << endl;
+    string machine, trainer;
+    cout <<"Enter machine name: ";
+    cin >> machine;
+    cout<< "Enter Trainer: ";
+    cin >> trainer;
+    bool found = machines.searchMachine(machine);
+    if (found) {
+        machines.removeTrainer(machine, trainer);
+    }
 }
