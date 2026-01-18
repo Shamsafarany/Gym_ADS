@@ -178,13 +178,57 @@ class BST{
 
 
         void deleteMachine(string name){
+            bool found = false;
             if (isEmpty()) {
-                cout << "No machines!" << endl;
+                cout << "No machines added!" << endl;
                 return;
             } else {
                 BSTNode* parent = NULL;
                 BSTNode* temp = root;
-
+                while (temp!= NULL) {
+                    if (temp-> name == name) {
+                        found = true;
+                        break;
+                    } else {
+                        parent = temp;
+                        if(name > temp->name) {
+                            temp = temp-> right;
+                        } else {
+                            temp = temp -> left;
+                        }
+                    }
+                }
+                if (!found) {
+                    cout << "Machine not found" <<endl;
+                    return;
+                }
+                //case1: leaf node
+                if (temp-> left == NULL && temp->right == NULL) {
+                    if (parent->left == temp) {
+                        parent->left = NULL;
+                    } else {
+                        parent->right = NULL;
+                    }
+                    delete temp;
+                    return;
+                } else if ((temp->left == NULL && temp->right != NULL) || (temp->left != NULL && temp->right == NULL)) {
+                    if (temp->left == NULL && temp->right != NULL) {
+                        if (parent->left == temp){
+                            parent->left = temp->right;
+                        } else {
+                            parent->right = temp ->right;
+                        }
+                        delete temp;
+                    } else {
+                        if (parent->left == temp) {
+                            parent->left = temp->left;
+                        } else {
+                            parent->right = temp->left;
+                        }
+                        delete temp;
+                    }
+                    return;
+                }
             }
         }
 
